@@ -18,4 +18,4 @@ Route::get('/', function () {
     return view('Layouts.main');
 });
 
-Route::resource('/msites', MsiteController::class);
+Route::resource('/msites', SiteController::class);

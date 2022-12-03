@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Msite;
 use Illuminate\Http\Request;
 
-class MsiteController extends Controller
+class SiteController extends Controller
 {
     /**
      * Display a listing of the resource.
