@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('Master.layouts.main');
+    return view('Layouts.main');
 });
 
 Route::resource('/msites', MsiteController::class);

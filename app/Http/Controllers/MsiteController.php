@@ -14,7 +14,7 @@ class MsiteController extends Controller
      */
     public function index()
     {
-        return view('Master.Msite.index');
+        return view('Layouts.main');
     }
 
     /**
