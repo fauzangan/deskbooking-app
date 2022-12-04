@@ -3,7 +3,7 @@
         <div class="sb-sidenav-menu">
             <div class="nav">
                 <div class="sb-sidenav-menu-heading">Master</div>
-                <a class="nav-link" href="index.html">
+                <a class="nav-link {{ Request::is('location*')? 'active' : '' }}" href="/location">
                     <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                     Master Location
                 </a>

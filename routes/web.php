@@ -1,6 +1,9 @@
 <?php
 
+use App\Http\Controllers\LocationController;
+use App\Http\Controllers\LoginController;
 use App\Http\Controllers\MsiteController;
+use App\Http\Controllers\SiteController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,8 +17,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('Layouts.main');
-});
+Route::get('/', [LoginController::class, 'index'])->middleware('guest');
+Route::post('/',[LoginController::class, 'authenticate']);
+Route::post('/logout',[LoginController::class, 'logout']);
 
-Route::resource('/msites', SiteController::class);
+Route::get('/location', [LocationController::class, 'show']);
+Route::get('/site', [SiteController::class, 'show']);

@@ -6,5 +6,7 @@ use Illuminate\Http\Request;
 
 class LocationController extends Controller
 {
-    //
+    public function show(){
+        return view('Master.Mlocation.index');
+    }
 }
