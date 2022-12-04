@@ -21,5 +21,8 @@ Route::get('/', [LoginController::class, 'index'])->middleware('guest')->name('l
 Route::post('/',[LoginController::class, 'authenticate']);
 Route::post('/logout',[LoginController::class, 'logout']);
 
-Route::get('/location', [LocationController::class, 'show'])->middleware('auth');
 Route::get('/site', [SiteController::class, 'show']);
+
+// Route Location
+Route::get('/location', [LocationController::class, 'show'])->middleware('auth');
+Route::get('/location/detail', [LocationController::class, 'detail'])->middleware('auth');

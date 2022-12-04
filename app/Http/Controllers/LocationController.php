@@ -13,4 +13,14 @@ class LocationController extends Controller
             'locations' => Mlocation::all()
         ]);
     }
+
+    public function detail(){
+        return view('Master.Mlocation.detail', [
+            'details' => Mlocation::all()
+        ]);
+    }
+
+    public function detailStore(){
+        
+    }
 }
