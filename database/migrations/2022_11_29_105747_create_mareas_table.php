@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('mareaheader', function (Blueprint $table) {
+        Schema::create('mareaheaders', function (Blueprint $table) {
             $table->id('intAreaHeaderId');
             $table->String('txtAreaName');
             $table->boolean('bitActive');

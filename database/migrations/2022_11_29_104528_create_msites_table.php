@@ -13,10 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('msite', function (Blueprint $table) {
+        Schema::create('msites', function (Blueprint $table) {
             $table->id('intSiteId');
             $table->String('txtSiteName');
-            $table->boolean('bitActive');
+            $table->boolean('bitActive')->default(1);
             $table->timestamps();
         });
     }

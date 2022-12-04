@@ -13,10 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('mlocation', function (Blueprint $table) {
+        Schema::create('mlocations', function (Blueprint $table) {
             $table->id('intLocationId');
             $table->String('txtLocationName');
-            $table->boolean('bitActive');
+            $table->boolean('bitActive')->default(1);
             $table->foreignId('intSiteId');
             $table->timestamps();
         });

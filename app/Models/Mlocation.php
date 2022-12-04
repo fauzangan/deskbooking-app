@@ -10,4 +10,8 @@ class Mlocation extends Model
     use HasFactory;
 
     protected $guarded = ['intLocationId'];
+
+    public function site(){
+        return $this->belongsTo(Msite::class, 'intSiteId');
+    }
 }

@@ -5,6 +5,10 @@ namespace Database\Seeders;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
+use App\Models\Msite;
+use App\Models\Mlocation;
+use App\Models\User;
+
 class DatabaseSeeder extends Seeder
 {
     /**
@@ -21,11 +25,25 @@ class DatabaseSeeder extends Seeder
         //     'email' => 'test@example.com',
         // ]);
 
-        \App\Models\User::create([
+        User::create([
             'name' => 'Ilyasa Aliadjrun',
             'username' => 'ilyas',
             'email' => 'ilyas@gmail.com',
             'password' => bcrypt('12345')
+        ]);
+
+        Msite::create([
+            'txtSiteName' => 'Tembalang'
+        ]);
+
+        Mlocation::create([
+            'txtLocationName' => 'Bulusan',
+            'intSiteId' => 1
+        ]);
+
+        Mlocation::create([
+            'txtLocationName' => 'Gondang',
+            'intSiteId' => 1
         ]);
     }
 }

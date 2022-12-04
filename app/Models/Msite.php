@@ -10,4 +10,9 @@ class Msite extends Model
     use HasFactory;
 
     protected $guarded = ['intSiteId'];
+    protected $primaryKey = 'intSiteId';
+
+    public function location(){
+        return $this->hasMany(Mlocation::class, 'intSiteId');
+    }
 }
