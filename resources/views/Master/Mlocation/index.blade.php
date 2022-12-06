@@ -22,10 +22,10 @@
                         <tbody>
                             @foreach ($locations as $location)
                                 <tr>
-                                    <td>{{ $location->intLocationId }}</td>
-                                    <td>{{ $location->site->txtSiteName }}</td>
-                                    <td>{{ $location->txtLocationName }}</td>
-                                    <td>{{ $location->bitActive }}</td>
+                                    <td>{{ $location->intlocationid }}</td>
+                                    <td>{{ $location->site->txtsitename }}</td>
+                                    <td>{{ $location->txtlocationname }}</td>
+                                    <td>{{ $location->bitactive }}</td>
                                 </tr>
                             @endforeach
                         </tbody>
@@ -35,8 +35,7 @@
         </div>
     </div>
 
-    <script src="https://code.jquery.com/jquery-3.6.1.min.js"
-        integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
     <script type="text/javascript" src="https://cdn.datatables.net/v/bs5/jq-3.6.0/dt-1.13.1/datatables.min.js"></script>
     <script>
         $('#tabel-master-location').DataTable({

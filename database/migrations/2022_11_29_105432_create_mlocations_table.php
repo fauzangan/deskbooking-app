@@ -14,10 +14,11 @@ return new class extends Migration
     public function up()
     {
         Schema::create('mlocations', function (Blueprint $table) {
-            $table->id('intLocationId');
-            $table->String('txtLocationName');
-            $table->boolean('bitActive')->default(1);
-            $table->foreignId('intSiteId');
+            $table->id('intlocationid');
+            $table->String('txtlocationname');
+            $table->boolean('bitactive')->default(1);
+            $table->foreignId('intsiteid'); // table msite
+            $table->foreign('intsiteid')->references('intsiteid')->on('msites')->onDelete('cascade');
             $table->timestamps();
         });
     }

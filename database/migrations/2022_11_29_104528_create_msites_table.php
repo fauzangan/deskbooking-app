@@ -14,9 +14,9 @@ return new class extends Migration
     public function up()
     {
         Schema::create('msites', function (Blueprint $table) {
-            $table->id('intSiteId');
-            $table->String('txtSiteName');
-            $table->boolean('bitActive')->default(1);
+            $table->id('intsiteid');
+            $table->String('txtsitename');
+            $table->boolean('bitactive')->default(1);
             $table->timestamps();
         });
     }

@@ -14,13 +14,17 @@ return new class extends Migration
     public function up()
     {
         Schema::create('treservations', function (Blueprint $table) {
-            $table->id('intReservationId');
-            $table->String('txtBookingTime');
-            $table->date('dtReservation');
-            $table->boolean('bitActive');
-            $table->String('txtInserted');
-            $table->boolean('bitCheckin');
-            $table->boolean('bitCheckout');
+            $table->id('intreservationid');
+            $table->String('txtbookingtime');
+            $table->date('dtreservation');
+            $table->boolean('bitactive');
+            // $table->foreignId('user_id');
+            // $table->foreign('user_id')->references('id')->on('users');
+            $table->string('txtinserted');
+            $table->foreignId('intareaid');
+            $table->foreign('intareaid')->references('intareadetailid')->on('mareadetails');
+            $table->boolean('bitcheckin');
+            $table->boolean('bitcheckout');
             $table->timestamps();
         });
     }

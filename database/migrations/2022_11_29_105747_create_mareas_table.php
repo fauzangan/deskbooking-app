@@ -14,11 +14,12 @@ return new class extends Migration
     public function up()
     {
         Schema::create('mareaheaders', function (Blueprint $table) {
-            $table->id('intAreaHeaderId');
-            $table->String('txtAreaName');
-            $table->boolean('bitActive');
-            $table->String('txtFileName');
-            $table->foreignId('intLocationId');
+            $table->id('intareaheaderid');
+            $table->String('txtareaname');//intAreaDetaiId
+            $table->boolean('bitactive')->default(1);
+            $table->String('txtfilename');
+            $table->foreignId('intlocationid');
+            $table->foreign('intlocationid')->references('intlocationid')->on('mlocations')->onDelete('cascade');
             $table->timestamps();
         });
     }

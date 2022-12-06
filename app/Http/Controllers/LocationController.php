@@ -23,4 +23,8 @@ class LocationController extends Controller
     public function detailStore(){
         
     }
+    /*
+    user : user, admin
+    
+    */
 }

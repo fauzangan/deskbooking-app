@@ -9,5 +9,5 @@ class Mareaheader extends Model
 {
     use HasFactory;
 
-    protected $guarded = ['intAreaId'];
+    protected $guarded = ['intareaid'];
 }

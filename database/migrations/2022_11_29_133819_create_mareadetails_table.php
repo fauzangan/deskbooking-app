@@ -14,11 +14,11 @@ return new class extends Migration
     public function up()
     {
         Schema::create('mareadetails', function (Blueprint $table) {
-            $table->id('intAreaDetaiId');
-            $table->String('txtDeskName');
-            $table->String('txtStatus');
-            $table->boolean('bitActive');
-            $table->foreignId('intAreaHeaderId');
+            $table->id('intareadetailid');
+            $table->String('txtdeskname');
+            $table->String('txtstatus');
+            $table->boolean('bitactive')->default(1);
+            $table->foreignId('intareaheaderid');
             $table->timestamps();
         });
     }

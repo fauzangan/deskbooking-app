@@ -9,9 +9,9 @@ class Mlocation extends Model
 {
     use HasFactory;
 
-    protected $guarded = ['intLocationId'];
+    protected $guarded = ['intlocationid'];
 
     public function site(){
-        return $this->belongsTo(Msite::class, 'intSiteId');
+        return $this->belongsTo(Msite::class, 'intsiteid');
     }
 }
