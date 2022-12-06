@@ -14,17 +14,47 @@ class LocationController extends Controller
         ]);
     }
 
-    public function detail(){
+    public function detail(Request $request){
+        $url = $request->id;
         return view('Master.Mlocation.detail', [
-            'details' => Mlocation::all()
+            'detail' => $url
         ]);
     }
 
-    public function detailStore(){
-        
+    public function getDataById(){
+        $id = $_POST['id'];
+        $location = Mlocation::where('intlocationid', $id)->first();
+        return json_encode(array('data'=>$location));
     }
     /*
     user : user, admin
     
     */
+
+    public function createLocation(Request $request){
+        $validatedData = $request->validate([
+            'intsiteid' => ['required'],
+            'txtlocationname' => ['required']
+        ]);
+        Mlocation::create($validatedData);
+        return redirect()->intended('/location');
+    }
+
+    public function updateLocation(Request $request){
+        // $id = $_POST['id'];
+        // $validatedData = $request->validate([
+        //     'intsiteid' => ['required'],
+        //     'intlocationid' => ['required'],
+        //     'txtlocationname' => ['required'],
+        //     'bitactive' => ['required']
+        // ]);
+        // Mlocation::where('intlocationid', $id)->update($validatedData);
+        $lokasi = Mlocation::find($request->id);
+        $lokasi->intsiteid = $request->site;
+        $lokasi->txtlocationname = $request->location;
+        $lokasi->bitactive = $request->active;
+        $lokasi->save();
+        return response()->json($lokasi);
+
+    }
 }

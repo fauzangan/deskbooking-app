@@ -26,3 +26,8 @@ Route::get('/site', [SiteController::class, 'show']);
 // Route Location
 Route::get('/location', [LocationController::class, 'show'])->middleware('auth');
 Route::get('/location/detail', [LocationController::class, 'detail'])->middleware('auth');
+
+Route::post('/site/getalldata', [SiteController::class, 'getAllData']);
+Route::post('/location/getdatabyid', [LocationController::class, 'getDataById']);
+Route::post('/location/createlocation', [LocationController::class, 'createLocation']);
+Route::post('/location/updatelocation', [LocationController::class, 'updateLocation']);
