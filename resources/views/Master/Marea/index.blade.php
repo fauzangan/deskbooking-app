@@ -22,16 +22,18 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($mareas as $marea)
+                            @foreach ($mareaheaders as $mareaheader)
                                 <tr>
-                                    <td>{{ $marea->intareaheaderid }}</td>
-                                    <td>{{ $marea->location->site->txtsitename }}</td>
-                                    <td>{{ $marea->location->txtlocationname }}</td>
-                                    @foreach ($marea->areaDetail as $mareadetail)
-                                        <td>{{ $mareadetail->txtdeskname }}</td>
-                                    @endforeach
-                                    <td></td>
-                                    <td>{{ $marea->bitactive }}</td>
+                                    <td>{{ $mareaheader->intareaheader }}</td>
+                                    <td>{{ $mareaheader->location->site->txtsitename }}</td>
+                                    <td>{{ $mareaheader->location->txtlocationname }}</td>
+                                    <td>{{ $mareaheader->txtareaname }}</td>
+                                    <td>
+                                        {{ $mareaheader->areaDetail->where('txtstatus', 'available')->count() }}
+                                    </td>
+                                    <td>
+                                        {{ $mareaheader->areaDetail->where('txtstatus', 'unavailable')->count() }}
+                                    </td>
                                 </tr>
                             @endforeach
                         </tbody>
@@ -51,12 +53,6 @@
                     render: function(data, type, row){
                         return '<a href="' + '/location/detail?id=' + data + '" class="btn btn-icon btn-primary btn-sm">' +
                             '<span>' + '<i class="fa-solid fa-arrow-right">' + '</i>' + '<span>' + '</a>';
-                    }
-                },
-                {
-                    targets: [3],
-                    render: function(data, type, row){
-                        return '<input type="checkbox" checked disabled/>'
                     }
                 }
             ]

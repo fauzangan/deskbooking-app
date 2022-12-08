@@ -4,10 +4,11 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-
 use App\Models\Msite;
 use App\Models\Mlocation;
 use App\Models\User;
+use App\Models\Mareaheader;
+use App\Models\Mareadetail;
 
 class DatabaseSeeder extends Seeder
 {
@@ -45,5 +46,56 @@ class DatabaseSeeder extends Seeder
             'txtLocationName' => 'Gondang',
             'intSiteId' => 1
         ]);
+
+        Mlocation::create([
+            'txtLocationName' => 'Contolodon',
+            'intSiteId' => 1
+        ]);
+
+        Mareaheader::create([
+            'txtareaname' => 'Kantor 1',
+            'intlocationid' => 1
+        ]);
+
+        Mareaheader::create([
+            'txtareaname' => 'Kantor 2',
+            'intlocationid' => 2
+        ]);
+
+        Mareaheader::create([
+            'txtareaname' => 'Kantor 3',
+            'intlocationid' => 3
+        ]);
+
+        Mareadetail::create([
+            'txtdeskname' => 'Desk A1',
+            'txtstatus' => 'available',
+            'intareaheaderid' => 1
+        ]);
+
+        Mareadetail::create([
+            'txtdeskname' => 'Desk A2',
+            'txtstatus' => 'available',
+            'intareaheaderid' => 1
+        ]);
+
+        Mareadetail::create([
+            'txtdeskname' => 'Desk A1',
+            'txtstatus' => 'available',
+            'intareaheaderid' => 2
+        ]);
+
+        Mareadetail::create([
+            'txtdeskname' => 'Desk A2',
+            'txtstatus' => 'unavailable',
+            'intareaheaderid' => 2
+        ]);
+
+        Mareadetail::create([
+            'txtdeskname' => 'Desk A1',
+            'txtstatus' => 'available',
+            'intareaheaderid' => 3
+        ]);
+        
     }
 }

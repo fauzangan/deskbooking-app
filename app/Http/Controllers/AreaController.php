@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Mareadetail;
 use App\Models\Mareaheader;
 use Illuminate\Http\Request;
 
@@ -11,7 +12,7 @@ class AreaController extends Controller
     public function index()
     {
         return view('Master.Marea.index', [
-            'mareas' => Mareaheader::all() 
+            'mareaheaders' => Mareaheader::all() 
         ]);
     }
 

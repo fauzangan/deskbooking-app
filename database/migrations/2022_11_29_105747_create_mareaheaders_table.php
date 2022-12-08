@@ -20,7 +20,6 @@ return new class extends Migration
             $table->String('txtfilename')->nullable();
             $table->foreignId('intlocationid');
             $table->foreign('intlocationid')->references('intlocationid')->on('mlocations')->onDelete('cascade');
-            $table->foreignId('intareadetailid');
             $table->timestamps();
         });
     }
