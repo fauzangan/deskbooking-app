@@ -30,13 +30,13 @@
                     </div>
                 </div>
 
-                @if ($detail != null)
+                {{-- @if ($detail != null)
                     <div class="row mb-3">
                         <div>
                             <input type="checkbox" name="" id="bitactive" />
                         </div>
                     </div>
-                @endif
+                @endif --}}
 
                 <div class="row mb-3">
                     <div class="col">
@@ -60,30 +60,5 @@
     <script src="https://code.jquery.com/jquery-3.6.1.min.js"
         integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
     <script src="{{ asset('Master/Location/mlocation_detail.js') }}" type="text/javascript"></script>
-    {{-- <script>
-        $(document).ready(function() {
-            const getAllData = () => {
-                $.ajax({
-                    url: "/site/getalldata",
-                    type: "POST",
-                    data: {
-                        _token:'{{ csrf_token() }}'
-                    },
-                    dataType: "json",
-                    success: function(res) {
-                        console.log(res)
-                        // if(res.sukses){
-                        //     objData = res.data
-                        //     console.log(objData)
-                        //     MappingSiteToDropdown()
-                        // }
-                        // else{
-                        //     console.log("Data Kosong")
-                        // }
-                    }
-                })
-            }
-            getAllData()
-        })
-    </script> --}}
+   
 @endsection

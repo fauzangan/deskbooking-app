@@ -66,7 +66,10 @@ class AreaController extends Controller
         //
     }
 
-    public function detail(){
-
+    public function detail(Request $request){
+        $url = $request->id;
+        return view('Master.Marea.detail', [
+            'detail' => $url
+        ]);
     }
 }

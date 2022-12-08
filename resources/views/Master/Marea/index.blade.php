@@ -3,7 +3,7 @@
     <h1 class="mt-4 mb-4">Master Area</h1>
     <div class="row">
         <div class="container-fluid px-1 mt-1">
-            <a href="/location/detail" class="btn btn-success mb-3"><span><i class="fa-solid fa-plus"></i></span> Create</a>
+            <a href="/area/detail" class="btn btn-success mb-3"><span><i class="fa-solid fa-plus"></i></span> Create</a>
             <div class="card mb-4">
                 <div class="card-header">
                     <i class="fas fa-table me-1"></i>
@@ -24,7 +24,7 @@
                         <tbody>
                             @foreach ($mareaheaders as $mareaheader)
                                 <tr>
-                                    <td>{{ $mareaheader->intareaheader }}</td>
+                                    <td>{{ $mareaheader->intareaheaderid }}</td>
                                     <td>{{ $mareaheader->location->site->txtsitename }}</td>
                                     <td>{{ $mareaheader->location->txtlocationname }}</td>
                                     <td>{{ $mareaheader->txtareaname }}</td>
@@ -51,7 +51,7 @@
                 {
                     targets: [0],
                     render: function(data, type, row){
-                        return '<a href="' + '/location/detail?id=' + data + '" class="btn btn-icon btn-primary btn-sm">' +
+                        return '<a href="' + '/area/detail?id=' + data + '" class="btn btn-icon btn-primary btn-sm">' +
                             '<span>' + '<i class="fa-solid fa-arrow-right">' + '</i>' + '<span>' + '</a>';
                     }
                 }
