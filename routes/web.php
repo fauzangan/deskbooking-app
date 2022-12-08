@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AreaController;
 use App\Http\Controllers\LocationController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\MsiteController;
@@ -34,3 +35,5 @@ Route::put('/location/updatelocation/{id}', [LocationController::class, 'updateL
 
 // Route Area
 // Route::get('/area', [LocationController::class, 'show'])->middleware('auth');
+Route::get('/area/detail', [AreaController::class, 'detail']);
+Route::resource('/area', AreaController::class)->except('edit', 'store')->middleware('auth');

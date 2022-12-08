@@ -9,5 +9,15 @@ class Mareaheader extends Model
 {
     use HasFactory;
 
-    protected $guarded = ['intareaid'];
+    protected $guarded = ['intareaheaderid'];
+    protected $primaryKey = 'intareaheaderid';
+
+
+    public function areaDetail(){
+        return $this->hasMany(Mareadetail::class, 'intareaheaderid');
+    }
+
+    public function location(){
+        return $this->belongsTo(Mlocation::class, 'intlocationid');
+    }
 }

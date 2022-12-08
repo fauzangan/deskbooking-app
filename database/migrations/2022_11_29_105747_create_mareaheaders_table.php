@@ -17,9 +17,10 @@ return new class extends Migration
             $table->id('intareaheaderid');
             $table->String('txtareaname');//intAreaDetaiId
             $table->boolean('bitactive')->default(1);
-            $table->String('txtfilename');
+            $table->String('txtfilename')->nullable();
             $table->foreignId('intlocationid');
             $table->foreign('intlocationid')->references('intlocationid')->on('mlocations')->onDelete('cascade');
+            $table->foreignId('intareadetailid');
             $table->timestamps();
         });
     }

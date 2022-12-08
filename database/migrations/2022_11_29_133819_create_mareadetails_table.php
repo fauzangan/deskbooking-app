@@ -19,6 +19,7 @@ return new class extends Migration
             $table->String('txtstatus');
             $table->boolean('bitactive')->default(1);
             $table->foreignId('intareaheaderid');
+            $table->foreign('intareaheaderid')->references('intareaheaderid')->on('mareaheaders');
             $table->timestamps();
         });
     }

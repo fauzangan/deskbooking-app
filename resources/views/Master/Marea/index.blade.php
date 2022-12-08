@@ -16,16 +16,22 @@
                                 <th></th>
                                 <th>Site</th>
                                 <th>Location</th>
-                                <th>Active</th>
+                                <th>Area</th>
+                                <th>Desk Available</th>
+                                <th>Desk Unavailable</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($locations as $location)
+                            @foreach ($mareas as $marea)
                                 <tr>
-                                    <td>{{ $location->intlocationid }}</td>
-                                    <td>{{ $location->site->txtsitename }}</td>
-                                    <td>{{ $location->txtlocationname }}</td>
-                                    <td>{{ $location->bitactive }}</td>
+                                    <td>{{ $marea->intareaheaderid }}</td>
+                                    <td>{{ $marea->location->site->txtsitename }}</td>
+                                    <td>{{ $marea->location->txtlocationname }}</td>
+                                    @foreach ($marea->areaDetail as $mareadetail)
+                                        <td>{{ $mareadetail->txtdeskname }}</td>
+                                    @endforeach
+                                    <td></td>
+                                    <td>{{ $marea->bitactive }}</td>
                                 </tr>
                             @endforeach
                         </tbody>
