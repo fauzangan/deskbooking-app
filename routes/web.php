@@ -31,3 +31,6 @@ Route::post('/site/getalldata', [SiteController::class, 'getAllData']);
 Route::post('/location/getdatabyid', [LocationController::class, 'getDataById']);
 Route::post('/location/createlocation', [LocationController::class, 'createLocation']);
 Route::put('/location/updatelocation/{id}', [LocationController::class, 'updateLocation']);
+
+// Route Area
+// Route::get('/area', [LocationController::class, 'show'])->middleware('auth');

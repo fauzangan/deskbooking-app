@@ -35,12 +35,12 @@ rel="stylesheet"
                         <p class="text-white-50 mb-5">Please enter your login and password!</p>
           
                         <div class="form-outline form-white mb-4">
-                          <input type="text" id="username" name="username" class="form-control form-control-lg" />
+                          <input type="text" id="username" name="username" class="form-control form-control-lg" autocomplete="off" />
                           <label class="form-label" for="username">Username</label>
                         </div>
           
                         <div class="form-outline form-white mb-4">
-                          <input type="password" id="password" name="password" class="form-control form-control-lg" />
+                          <input type="password" id="password" name="password" class="form-control form-control-lg" autocomplete="off" />
                           <label class="form-label" for="username">Password</label>
                         </div>
                         <button class="btn btn-outline-light btn-lg px-5" type="submit">Login</button>

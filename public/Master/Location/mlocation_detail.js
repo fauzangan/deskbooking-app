@@ -116,8 +116,7 @@ const CreateLocation = () => {
         data: resultForm,
         dataType: "json",
         success: (res) => {
-            console.log(res)
-            alert("Sukses Tambah Lokasi")
+            alert(res.success)
             window.location = "/location"
         }
     })
@@ -145,6 +144,7 @@ const UpdateLocation = () => {
         dataType: "json",
         success: (res) => {
             alert(res.success)
+            window.location = "/location"
         }
     })
 }

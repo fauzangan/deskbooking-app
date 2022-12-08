@@ -7,7 +7,7 @@
                     <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                     Master Location
                 </a>
-                <a class="nav-link" href="index.html">
+                <a class="nav-link"  href="/area">
                     <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                     Master Area
                 </a>

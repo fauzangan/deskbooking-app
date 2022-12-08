@@ -41,7 +41,7 @@ class LocationController extends Controller
             'txtlocationname' => ['required']
         ]);
         Mlocation::create($validatedData);
-        return redirect()->intended('/location');
+        return response()->json(['success' => "Berhasil melakukan create"]);
     }
 
     public function updateLocation(Request $request, $id)
