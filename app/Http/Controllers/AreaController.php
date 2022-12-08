@@ -17,9 +17,12 @@ class AreaController extends Controller
     }
 
 
-    public function create()
+    public function create(Request $request)
     {
-        //
+        $url = $request->id;
+        return view('Master.Marea.detail', [
+            'detail' => $url
+        ]);
     }
 
     public function store(Request $request)
@@ -65,11 +68,5 @@ class AreaController extends Controller
     {
         //
     }
-
-    public function detail(Request $request){
-        $url = $request->id;
-        return view('Master.Marea.detail', [
-            'detail' => $url
-        ]);
-    }
+    
 }

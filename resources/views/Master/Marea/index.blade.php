@@ -11,7 +11,7 @@
                             Area
                         </div>
                         <div class="col col-md-auto">
-                            <a href="/area/detail" class="btn btn-success"><span><i class="fa-solid fa-plus"></i></span> Create Area</a>
+                            <a href="/area/create" class="btn btn-success"><span><i class="fa-solid fa-plus"></i></span> Create Area</a>
                         </div>
                     </div>
                 </div>

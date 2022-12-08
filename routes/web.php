@@ -34,6 +34,4 @@ Route::post('/location/createlocation', [LocationController::class, 'createLocat
 Route::put('/location/updatelocation/{id}', [LocationController::class, 'updateLocation']);
 
 // Route Area
-// Route::get('/area', [LocationController::class, 'show'])->middleware('auth');
-Route::get('/area/detail', [AreaController::class, 'detail']);
 Route::resource('/area', AreaController::class)->except('edit', 'store')->middleware('auth');
