@@ -37,6 +37,10 @@ class DatabaseSeeder extends Seeder
             'txtSiteName' => 'Tembalang'
         ]);
 
+        Msite::create([
+            'txtSiteName' => 'Banyumanik'
+        ]);
+
         Mlocation::create([
             'txtLocationName' => 'Bulusan',
             'intSiteId' => 1
