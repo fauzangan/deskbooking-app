@@ -114,10 +114,11 @@ const CreateLocation = () => {
         url: "/location/createlocation",
         type: "post",
         data: resultForm,
-        datatype: "json",
+        dataType: "json",
         success: (res) => {
             console.log(res)
             alert("Sukses Tambah Lokasi")
+            window.location = "/location"
         }
     })
 }
@@ -129,22 +130,21 @@ const UpdateLocation = () => {
     let site = $("#intsiteid").val()
     let location = $("#txtlocationname").val()
     let active = $("#bitactive").val()
+    if(active == "on"){
+        active = 1
+    }
     $.ajax({
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         },
-        url: "/location/updatelocation",
-        type: "POST",
+        url: "/location/updatelocation/" + idLocation,
+        type: "PUT",
         data: {
-            id: id,
-            site: site,
-            location: location,
-            active: active
+            location: location
         },
-        datatype: "json",
+        dataType: "json",
         success: (res) => {
-            console.log(res)
-            alert("Sukses Ubah Lokasi")
+            alert(res.success)
         }
     })
 }

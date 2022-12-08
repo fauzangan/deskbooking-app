@@ -8,15 +8,15 @@
 
     <div class="card">
         <form>
+            @csrf
             <div class="card-body mw-800px">
                 @if ($detail != null)
                     <input type="hidden" id="intlocationid" />
-                    @method('PUT')
                 @endif
 
                 <div class="row mb-3">
                     <label for="intsiteid">Site Name</label>
-                    <div class="col-6"">
+                    <div class="col-6">
                         <select class="select form-select form-select-solid" id="intsiteid">
                             
                         </select>
