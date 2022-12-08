@@ -8,7 +8,7 @@
                     Master Location
                 </a>
                 <a class="nav-link {{ Request::is('area*')? 'active' : '' }}"  href="/area">
-                    <div class="sb-nav-link-icon"><i class="fas fa-map-marker"></i></div>
+                    <div class="sb-nav-link-icon"><i class="fas fa-location-arrow"></i></div>
                     Master Area
                 </a>
                 <div class="sb-sidenav-menu-heading">Monitoring</div>

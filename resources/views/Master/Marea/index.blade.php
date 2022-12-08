@@ -3,11 +3,17 @@
     <h1 class="mt-4 mb-4">Master Area</h1>
     <div class="row">
         <div class="container-fluid px-1 mt-1">
-            <a href="/area/detail" class="btn btn-success mb-3"><span><i class="fa-solid fa-plus"></i></span> Create</a>
             <div class="card mb-4">
                 <div class="card-header">
-                    <i class="fas fa-table me-1"></i>
-                    Area
+                    <div class="row">
+                        <div class="col my-auto">
+                            <i class="fas fa-table me-1"></i>
+                            Area
+                        </div>
+                        <div class="col col-md-auto">
+                            <a href="/area/detail" class="btn btn-success"><span><i class="fa-solid fa-plus"></i></span> Create Area</a>
+                        </div>
+                    </div>
                 </div>
                 <div class="card-body">
                     <table class="table table-bordered" id="tabel-master-location">
