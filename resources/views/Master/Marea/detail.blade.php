@@ -15,18 +15,20 @@
                 @endif
 
                 <div class="row mb-3">
-                    <label for="intsiteid">Site Name</label>
+                    <label for="intlocationid">Site Name</label>
                     <div class="col-6">
-                        <select class="select form-select form-select-solid" id="intsiteid">
-
-                        </select>
+                        <input class="form-control form-control-solid" type="text" name="" id="intlocationid" value="{{ $sites[0]->txtsitename }}" readonly/>
                     </div>
                 </div>
 
                 <div class="row mb-3">
-                    <label for="txtlocationname">Location Name</label>
+                    <label for="intlocationid">Location Name</label>
                     <div class="col-6">
-                        <input class="form-control form-control-solid" type="text" name="" id="txtlocationname" />
+                        <select class="select form-select form-select-solid" id="intlocationid">
+                            @foreach($locations as $location)
+                                <option value="{{ $location->intlocationid }}">{{ $location->txtlocationname }}</option>
+                            @endforeach
+                        </select>
                     </div>
                 </div>
 

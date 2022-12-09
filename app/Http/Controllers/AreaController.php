@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Mareadetail;
 use App\Models\Mareaheader;
+use App\Models\Mlocation;
+use App\Models\Msite;
 use Illuminate\Http\Request;
 
 class AreaController extends Controller
@@ -21,7 +23,9 @@ class AreaController extends Controller
     {
         $url = $request->id;
         return view('Master.Marea.detail', [
-            'detail' => $url
+            'detail' => $url,
+            'sites' => Msite::all(),
+            'locations' => Mlocation::all()
         ]);
     }
 
