@@ -44,23 +44,5 @@
 
     <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
     <script type="text/javascript" src="https://cdn.datatables.net/v/bs5/jq-3.6.0/dt-1.13.1/datatables.min.js"></script>
-    <script>
-        $('#tabel-master-location').DataTable({
-            columnDefs: [
-                {
-                    targets: [0],
-                    render: function(data, type, row){
-                        return '<a href="' + '/location/detail?id=' + data + '" class="btn btn-icon btn-primary btn-sm">' +
-                            '<span>' + '<i class="fa-solid fa-arrow-right">' + '</i>' + '<span>' + '</a>';
-                    }
-                },
-                {
-                    targets: [3],
-                    render: function(data, type, row){
-                        return '<input type="checkbox" checked disabled/>'
-                    }
-                }
-            ]
-        });
-    </script>
+    <script src="{{ asset('Master/Location/mlocation_index.js') }}" type="text/javascript"></script>
 @endsection
