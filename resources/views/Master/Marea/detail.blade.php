@@ -1,9 +1,9 @@
 @extends('Layouts.main')
 @section('container')
     @if ($detail != null)
-        <h1 class="mt-4 mb-4">Edit Location</h1>
+        <h1 class="mt-4 mb-4">Edit Area</h1>
     @else
-        <h1 class="mt-4 mb-4">Add Location</h1>
+        <h1 class="mt-4 mb-4">Add Area</h1>
     @endif
 
     <div class="card">
@@ -53,7 +53,8 @@
                 </div>
 
                 <div class="image-area mt-4">
-                    <img id="imageResult" src="" alt="gambar layout" class="img-fluid rounded shadow-sm mx-auto d-block" />
+                    <img id="imageResult" src="" alt="gambar layout" class="img-fluid rounded shadow-sm d-block"
+                        width="600" height="auto" />
                 </div>
 
                 <div class="row mb-3">
