@@ -19,8 +19,14 @@ class LoginController extends Controller
 
         if (Auth::attempt($credentials)){
             $request->session()->regenerate();
-            return redirect()->intended('/location');
+            if( auth()->user()->is_admin == 1){
+                return redirect()->intended('/location');
+            }else{
+                return redirect()->intended('/reservation');
+            }
+            // return redirect()->intended('/location');
         }
+        
         return back()->with('loginError','Email atau Password Salah!');
     }
 

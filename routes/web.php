@@ -4,6 +4,7 @@ use App\Http\Controllers\AreaController;
 use App\Http\Controllers\LocationController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\MsiteController;
+use App\Http\Controllers\ReservationController;
 use App\Http\Controllers\SiteController;
 use Illuminate\Support\Facades\Route;
 
@@ -35,4 +36,5 @@ Route::put('/location/updatelocation/{id}', [LocationController::class, 'updateL
 
 // Route Area
 Route::post('/area/detail', [AreaController::class, 'createDetail']);
-Route::resource('/area', AreaController::class)->middleware('auth');
+Route::resource('/area', AreaController::class)->middleware('admin');
+Route::resource('/reservation', ReservationController::class)->middleware('auth');

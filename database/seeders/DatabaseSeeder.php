@@ -19,7 +19,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        \App\Models\User::factory(100)->create();
+        // \App\Models\User::factory(100)->create();
 
         // \App\Models\User::factory()->create([
         //     'name' => 'Test User',
@@ -30,7 +30,16 @@ class DatabaseSeeder extends Seeder
             'name' => 'Ilyasa Aliadjrun',
             'username' => 'ilyas',
             'email' => 'ilyas@gmail.com',
-            'password' => bcrypt('12345')
+            'password' => bcrypt('12345'),
+            'is_admin' => 1
+        ]);
+
+        User::create([
+            'name' => 'Ojan',
+            'username' => 'ojan',
+            'email' => 'ojan@gmail.com',
+            'password' => bcrypt('12345'),
+            'is_admin' => 0
         ]);
 
         Msite::create([
