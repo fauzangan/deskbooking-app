@@ -12,6 +12,8 @@
             <div class="card-body mw-800px">
                 @if ($detail != null)
                     <input type="hidden" id="intareaheaderid" name="intareaheaderid" />
+                    <img id="imageResult" src="{{ asset('storage/'.$areaheaders[$detail-1]->txtfilename) }}" alt="gambar layout" class="img-fluid rounded shadow-sm d-block mb-3"
+                            width="700" height="auto" />
                     <div class="card" style="width: 700px;">
                         <div class="card-header">
                             <div class="row">
@@ -20,8 +22,10 @@
                                     Desk
                                 </div>
                                 <div class="col col-md-auto">
-                                    <button type="button" class="btn btn-success" id="popup"><span><i
-                                                class="fa-solid fa-plus"></i></span> Create Desk</button>
+                                    {{-- <button type="button" class="btn btn-success" id="popup"><span><i class="fa-solid fa-plus"></i></span> Create Desk</button> --}}
+                                    <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                        data-bs-target="#createModal"><span><i class="fa-solid fa-plus"></i></span> Create
+                                        Desk</button>
                                 </div>
                             </div>
                         </div>
@@ -35,10 +39,10 @@
                                 </thead>
                                 <tbody>
                                     @foreach ($areadetails as $areadetail)
-                                    <tr>
-                                        <td>{{ $areadetail->txtdeskname }}</td>
-                                        <td>{{ $areadetail->txtstatus }}</td>
-                                    </tr>
+                                        <tr>
+                                            <td>{{ $areadetail->txtdeskname }}</td>
+                                            <td>{{ $areadetail->txtstatus }}</td>
+                                        </tr>
                                     @endforeach
                                 </tbody>
                             </table>
@@ -107,8 +111,43 @@
         </form>
     </div>
 
-
-
+    <!-- Modal -->
+    <div class="modal fade" id="createModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Create Desk</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form action="/area/detail" method="POST">
+                        @csrf
+                        <input type="hidden" id="intareaheaderid" name="intareaheaderid" value="{{ $detail }}" />
+                        <div class="row mb-3">
+                            <label for="txtareaname">Desk Name</label>
+                            <div class="col-12">
+                                <input class="form-control form-control-solid" type="text" name="txtdeskname"
+                                    id="txtdeskname" />
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <label for="txtareaname">Status</label>
+                            <div class="col-12">
+                                <select class="select form-select form-select-solid" name="txtstatus" id="txtstatus">
+                                        <option value="available" selected> Available</option>
+                                        <option value="unavailable"> Unavailable</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary">Save changes</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <script src="https://code.jquery.com/jquery-3.6.1.min.js"
         integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>

@@ -26,7 +26,9 @@ class AreaController extends Controller
             'detail' => $url,
             'sites' => Msite::all(),
             'locations' => Mlocation::all(),
-            'areadetails' => Mareadetail::where('intareaheaderid', $url)->get()
+            'areadetails' => Mareadetail::where('intareaheaderid', $url)->get(),
+            'areaheaders' => Mareaheader::all()
+            // 'areaheaders' => Mareaheader::where('intareaheaderid', $url)->get()
         ]);
     }
 
@@ -44,6 +46,7 @@ class AreaController extends Controller
         }
 
         Mareaheader::create($validatedData);
+        return redirect('/area');
     }
 
     public function show($id)
@@ -85,4 +88,19 @@ class AreaController extends Controller
         //
     }
     
+    public function createDetail(Request $request){
+        $validatedData = $request->validate([
+            'intareaheaderid' => ['required'],
+            'txtdeskname' => ['required'],
+            'txtstatus' => ['required'],
+            'txtfilename' => ['image', 'file']
+        ]);
+
+        if($request->file('txtfilename')) {
+            $validatedData['txtfilename'] = $request->file('txtfilename')->store('area-images');
+        }
+
+        Mareadetail::create($validatedData);
+        return redirect('/area');
+    }
 }
