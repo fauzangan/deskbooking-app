@@ -17,6 +17,12 @@ const dt = $("#table_marea").DataTable({
     paging: false,
     searching: false,
     info: false,
+    dom: 'Bfrtip',
+    buttons: [
+        'colvis',
+        'excel',
+        'print'
+    ],
     language: {
         emptyTable: "",
         zeroRecords: "",

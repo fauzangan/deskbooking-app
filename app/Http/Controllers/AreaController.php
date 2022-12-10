@@ -31,7 +31,18 @@ class AreaController extends Controller
 
     public function store(Request $request)
     {
-        //
+        // dd($request);
+        $validatedData = $request->validate([
+            'intlocationid' => ['required'],
+            'txtareaname' => ['required'],
+            'txtfilename' => ['image', 'file']
+        ]);
+
+        if($request->file('txtfilename')) {
+            $validatedData['txtfilename'] = $request->file('txtfilename')->store('area-images');
+        }
+
+        Mareaheader::create($validatedData);
     }
 
     public function show($id)

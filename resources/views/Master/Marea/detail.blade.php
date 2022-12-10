@@ -7,7 +7,7 @@
     @endif
 
     <div class="card">
-        <form class="form" id="form-area" enctype="multipart/form-data">
+        <form class="form" action="/area" method="POST" id="form-area" enctype="multipart/form-data">
             @csrf
             <div class="card-body mw-800px">
                 @if ($detail != null)
@@ -17,15 +17,14 @@
                 <div class="row mb-3">
                     <label for="intlocationid">Site Name</label>
                     <div class="col-6">
-                        <input class="form-control form-control-solid" type="text" name="" id="intlocationid"
-                            value="{{ $sites[0]->txtsitename }}" readonly />
+                        <input class="form-control form-control-solid" type="text" name="" id="intlocationid" value="{{ $sites[0]->txtsitename }}" readonly />
                     </div>
                 </div>
 
                 <div class="row mb-3">
                     <label for="intlocationid">Location Name</label>
                     <div class="col-6">
-                        <select class="select form-select form-select-solid" id="intlocationid">
+                        <select class="select form-select form-select-solid" name="intlocationid" id="intlocationid">
                             @foreach ($locations as $location)
                                 <option value="{{ $location->intlocationid }}">{{ $location->txtlocationname }}</option>
                             @endforeach
@@ -34,16 +33,16 @@
                 </div>
 
                 <div class="row mb-3">
-                    <label for="txtlocationname">Area Name</label>
+                    <label for="txtareaname">Area Name</label>
                     <div class="col-6">
-                        <input class="form-control form-control-solid" type="text" name="" id="txtareaname" />
+                        <input class="form-control form-control-solid" type="text" name="txtareaname" id="txtareaname" />
                     </div>
                 </div>
 
                 <div class="row mb-3">
                     <label for="txtlocationname">Layout</label>
                     <div class="col-6">
-                        <input type="file" class="form-control form-control-solid" id="layout" name="layout" accept="image/*" />
+                        <input type="file" class="form-control form-control-solid" id="layout" name="txtfilename" accept="image/*" />
                     </div>
                 </div>
 
@@ -95,7 +94,7 @@
                             <button type="button" class="btn btn-primary px-6 me-1" onclick="updateArea()">Edit
                                 Area</button>
                         @else
-                            <button type="button" class="btn btn-primary px-6 me-1" onclick="createArea()">Add
+                            <button type="submit" class="btn btn-primary px-6 me-1">Add
                                 Area</button>
                         @endif
                         <button type="button" class="btn btn-danger px-6" onclick="BackToIndex()">Back</button>
