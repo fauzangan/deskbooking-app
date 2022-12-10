@@ -25,7 +25,8 @@ class AreaController extends Controller
         return view('Master.Marea.detail', [
             'detail' => $url,
             'sites' => Msite::all(),
-            'locations' => Mlocation::all()
+            'locations' => Mlocation::all(),
+            'areadetails' => Mareadetail::where('intareaheaderid', $url)->get()
         ]);
     }
 

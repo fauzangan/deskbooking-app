@@ -17,49 +17,10 @@ const dt = $("#table_marea").DataTable({
     paging: false,
     searching: false,
     info: false,
-    dom: 'Bfrtip',
-    buttons: [
-        'colvis',
-        'excel',
-        'print'
-    ],
     language: {
         emptyTable: "",
         zeroRecords: "",
-    },
-    columns: [
-        {
-            data: null,
-            render: function (data, type, row) {
-                return '<button id="deleteRow" type="button" class="btn btn-danger">Delete</button>';
-            },
-        },
-        {
-            data: null,
-            render: function (data, type, row) {
-                let html = '<input id = "txtdeskname_' + iterationName + '" type="text" value="' + row.txtdeskname + '"   class="form-control form-control-solid"/>';
-                // html += '<input id = "intareadetailid_' + iterationName + '" type="text" value="' + row.intareadetailid + '"   class="form-control form-control-solid" hidden/>';
-                // html += '<input id = "bitactive_' + iterationName + '" type="text" value="' + row.bitactive + '"   class="form-control form-control-solid" hidden/>'
-                return html;
-            },
-        },
-        {
-            data: null,
-            render: function (data, type, row) {
-                let html = "";
-                for (let x = 0; x < deskStatus.length; x++) {
-                    if (row.txtstatus == deskStatus[x]) {
-                        html += "<option value='" + deskStatus[x] + "' selected>" + deskStatus[x] + "</option>";
-                    } else {
-                        html += "<option value='" + deskStatus[x] + "'>" + deskStatus[x] + "</option>";
-                    }
-                }
-                return (
-                    '<select id = "select_' + iterationSelect + '" value="' + row.txtstatus + '" class="select form-select form-select-solid">' + html + "</select>"
-                );
-            },
-        },
-    ],
+    }
 });
 
 $(document).ready(function () {});
