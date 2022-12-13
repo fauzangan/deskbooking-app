@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Treservation;
 use Illuminate\Http\Request;
 
 class ReservationController extends Controller
@@ -11,9 +12,11 @@ class ReservationController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Treservation $treservation)
     {
-        return view('Transaction.index');
+        return view('Transaction.index', [
+            'reservations' => Treservation::where('txtinserted', auth()->user()->name)->where('bitactive', 1)->where('txtreservationstatus', '!=', 'cancel')->where('txtreservationstatus', '!=', 'checkout')->get(),
+        ]);
     }
 
     /**
@@ -68,7 +71,14 @@ class ReservationController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $rules = [
+            'txtreservationstatus' => ['required'] 
+        ];
+
+        $validatedData = $request->validate($rules);
+
+        Treservation::where('intreservationid', $id)->update($validatedData);
+        return redirect('/reservation');
     }
 
     /**

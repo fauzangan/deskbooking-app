@@ -15,16 +15,12 @@ return new class extends Migration
     {
         Schema::create('treservations', function (Blueprint $table) {
             $table->id('intreservationid');
-            $table->String('txtbookingtime');
             $table->date('dtreservation');
-            $table->boolean('bitactive');
-            // $table->foreignId('user_id');
-            // $table->foreign('user_id')->references('id')->on('users');
+            $table->boolean('bitactive')->default(true);
             $table->string('txtinserted');
-            $table->foreignId('intareaid');
-            $table->foreign('intareaid')->references('intareadetailid')->on('mareadetails');
-            $table->boolean('bitcheckin');
-            $table->boolean('bitcheckout');
+            $table->foreignId('intareadetailid');
+            $table->foreign('intareadetailid')->references('intareadetailid')->on('mareadetails');
+            $table->String('txtreservationstatus')->default("reserved");
             $table->timestamps();
         });
     }

@@ -15,4 +15,8 @@ class Mareadetail extends Model
     public function header(){
        return $this->belongsTo(Mareaheader::class, 'intareaheaderid');
     }
+
+    public function reservation(){
+        return $this->hasMany(Treservation::class, 'intareadetailid');
+    }
 }

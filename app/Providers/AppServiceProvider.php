@@ -35,5 +35,8 @@ class AppServiceProvider extends ServiceProvider
             return $user->is_admin == 0;
         });
 
+        config(['app.locale' => 'id']);
+        \Carbon\Carbon::setLocale('id');
+
     }
 }

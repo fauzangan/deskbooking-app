@@ -85,9 +85,49 @@ class DatabaseSeeder extends Seeder
             'txtstatus' => 'available',
             'intareaheaderid' => 1
         ]);
-
         Mareadetail::create([
             'txtdeskname' => 'Desk A2',
+            'txtstatus' => 'available',
+            'intareaheaderid' => 1
+        ]);
+        Mareadetail::create([
+            'txtdeskname' => 'Desk A3',
+            'txtstatus' => 'available',
+            'intareaheaderid' => 1
+        ]);
+        Mareadetail::create([
+            'txtdeskname' => 'Desk A4',
+            'txtstatus' => 'available',
+            'intareaheaderid' => 1
+        ]);
+        Mareadetail::create([
+            'txtdeskname' => 'Desk A5',
+            'txtstatus' => 'available',
+            'intareaheaderid' => 1
+        ]);
+        Mareadetail::create([
+            'txtdeskname' => 'Desk A6',
+            'txtstatus' => 'available',
+            'intareaheaderid' => 1
+        ]);
+        Mareadetail::create([
+            'txtdeskname' => 'Desk A7',
+            'txtstatus' => 'available',
+            'intareaheaderid' => 1
+        ]);
+        Mareadetail::create([
+            'txtdeskname' => 'Desk A8',
+            'txtstatus' => 'available',
+            'intareaheaderid' => 1
+        ]);
+        Mareadetail::create([
+            'txtdeskname' => 'Desk A9',
+            'txtstatus' => 'available',
+            'intareaheaderid' => 1
+        ]);
+
+        Mareadetail::create([
+            'txtdeskname' => 'Desk A10',
             'txtstatus' => 'available',
             'intareaheaderid' => 1
         ]);

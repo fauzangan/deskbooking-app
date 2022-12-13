@@ -1,24 +1,6 @@
 @extends('Layouts.main')
 @section('container')
-    <div id="modalReservation" class="modal" tabindex="-1" aria-hidden="true" style="display: none;">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button id="btn-closePopup" tye="button" class="col-4 btn-close m-0" onclick="closePopup()"></button>
-                </div>
-                <div class="modal-body">
-                    <h4 class="modal-body text-center m-0">areaname deskname</h4>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-success" id="checkIn">Check
-                        IN</button>
-                    <button type="button" class="btn btn-success" id="checkOut">Check
-                        OUT</button>
-                    <button type="button" class="btn btn-danger" id="cancelRes">Batalkan</button>
-                </div>
-            </div>
-        </div>
-    </div>
+
 
     <div class="container">
         <div class="main-body">
@@ -53,32 +35,69 @@
                                 style="padding: 1.25rem 1.25rem 0px 1.25rem;">Schedule</h2>
                             <div class="table-responsive mt-4" id="table-home-page"
                                 style="padding: 0 1.25rem 1.25rem 1.25rem;">
-                                <table id="kt_datatable_home_1" class="table align-middle table-row-dashed gy-5"
+                                <table id="tabel_reservasi" class="table align-middle table-striped gy-5"
                                     style="font-size: 18px">
                                     <thead>
                                         <tr>
                                             <th></th>
-                                            <th>City</th>
+                                            <th>Date</th>
                                             <th>Location</th>
+                                            <th>Area</th>
                                             <th>Desk</th>
                                             <th>Status</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td>
-                                                <button type="button" class="btn btn-primary btn-icon btn-lg"
-                                                    onclick="openModal()">
-                                                    <span>
-                                                        <i class="fas fa-arrow-right fa-1x"></i>
-                                                    </span>
-                                                </button>
-                                            </td>
-                                            <td>Tembalang</td>
-                                            <td>Bulusan</td>
-                                            <td>Desk A-1</td>
-                                            <td>Reserved</td>
-                                        </tr>
+                                        @foreach ($reservations as $reservation)
+                                            <tr>
+                                                <td><a href="#" data-bs-toggle="modal" data-bs-target="#modalReservation{{ $reservation->intreservationid }}" class="badge bg-info">Kontol</a></td>
+                                                <td>{{ $reservation->dtreservation }}</td>
+                                                <td>{{ $reservation->areadetail->header->location->txtlocationname }}</td>
+                                                <td>{{ $reservation->areadetail->header->txtareaname }}</td>
+                                                <td>{{ $reservation->areadetail->txtdeskname }}</td>
+                                                <td>{{ $reservation->txtreservationstatus }}</td>
+                                            </tr>
+                                            <div id="modalReservation{{ $reservation->intreservationid }}" class="modal" tabindex="-1" aria-hidden="true">
+                                                <div class="modal-dialog modal-dialog-centered">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <h4 class="modal-body text-center m-0">{{ $reservation->areadetail->header->txtareaname }} {{ $reservation->areadetail->txtdeskname }}</h4>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <form action="/reservation/{{ $reservation->intreservationid }}" method="POST" class="d-inline">
+                                                                @method('PUT')
+                                                                @csrf
+                                                                <input type="text" value="checkin" name="txtreservationstatus" hidden>
+                                                                @if($reservation->txtreservationstatus == 'checkin')
+                                                                <button class="btn btn-info" type="submit" disabled>Check In</button>
+                                                                @else
+                                                                <button class="btn btn-info" type="submit">Check In</button>
+                                                                @endif
+                                                            </form>
+                                                            <form action="/reservation/{{ $reservation->intreservationid }}" method="POST" class="d-inline">
+                                                                @method('PUT')
+                                                                @csrf
+                                                                <input type="text" value="checkout" name="txtreservationstatus" hidden>
+                                                                @if($reservation->txtreservationstatus == 'reserved')
+                                                                <button class="btn btn-success" type="submit" disabled>Check Out</button>
+                                                                @else
+                                                                <button class="btn btn-success" type="submit" >Check Out</button>
+                                                                @endif
+                                                            </form>
+                                                            <form action="/reservation/{{ $reservation->intreservationid }}" method="POST" class="d-inline">
+                                                                @method('PUT')
+                                                                @csrf
+                                                                <input type="text" value="cancel" name="txtreservationstatus" hidden>
+                                                                <button class="btn btn-danger" type="submit">CANCEL</button>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        @endforeach
                                     </tbody>
                                 </table>
 
@@ -107,5 +126,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/js/all.min.js"
         integrity="sha512-rpLlll167T5LJHwp0waJCh3ZRf7pO6IT1+LZOhAyP6phAirwchClbTZV3iqL3BMrVxIYRbzGTpli4rfxsCK6Vw=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="{{ asset('Transaction/reservation_index.js') }}"></script>
+        <script type="text/javascript" src="https://cdn.datatables.net/v/bs5/jq-3.6.0/dt-1.13.1/datatables.min.js"></script>
+        <script src="{{ asset('Transaction/reservation_index.js') }}"></script>
 @endsection
