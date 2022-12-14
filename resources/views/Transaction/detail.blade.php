@@ -1,149 +1,80 @@
 @extends('Layouts.main')
 @section('container')
-<div class="container">
-
-    <!--MAIN VIEW-->
-    <form id="formReservation" class="form" method="post" autocomplete="off">
-        <div class="card" id="reservationForJadwal">
-            <div class="card-body">
-                <div class="row m-5">
-                    <!--hidden textbox-->
-                    <input type="hidden" asp-for="intlocationid" autocomplete="off"/>
-                    <input type="hidden" asp-for="intareadetailid" autocomplete="off"/>
-                    <input type="hidden" asp-for="txtbookingtime" autocomplete="off"/>
-                    <input type="hidden" asp-for="dtreservation" autocomplete="off"/>
-                    <input type="hidden" asp-for="txtinserted" value="@GlobalClass.dLogin().userDat.txtUserName" autocomplete="off"/>
-                    <input type="hidden" id="intbookingtimeid" autocomplete="off"/>
-
-                    <input type="hidden" id="txtdeskname" autocomplete="off"/>
-                    <input type="hidden" id="btnLocationname" autocomplete="off"/>
-                    <!--hidden textbox-->
-                    <button id="btn-back" type="button" class="btn btn-icon btn-icon-primary p-0" onclick="BackToIndex()" ><span><i class="fa fa-arrow-left fa-lg"></i></span>&nbsp;Back</button>
-                    <h1 class="text-center text-decoration-underline">Reservation For</h1>
+    <div class="card mt-5">
+        <form class="form" id="form-reservasi" action="">
+            <h2 class="fw-bold p-0 mt-4 mb-0 text-center">New reservation</h2>
+            <div class="card m-5" id="view-1">
+                <div class="card-header">
+                    <h5 class="text-center fw-bold p-0 m-0">Select Location</h5>
                 </div>
-
-                <div class="row p-3">
-                    <div class="col-sm-3 text-start pt-3">
-                        <label class="fs-4 fw-bold">Pilih Tanggal Reservasi :</label>
-                    </div>
-                    <div class="col-sm-4 text-end">
-                        <div class="input-group">
-                            <input type="text" id="newJadwal" class="form-control form-control-solid" value="" readonly autocomplete="off"/>
-                            <button id="btn-showPopup" type="button" class="btn btn-primary btn-icon" onclick="showPopup()" ><i class="fa fa-plus fa-10x"></i></button>
+                <div class="card-body">
+                    <div class="row p-4">
+                        <div class="col-sm-3 text-start">
+                            <label class="fs-5">Pilih Tanggal Reservasi :</label>
+                        </div>
+                        <div class="col-sm-4 text-end">
+                            <div class="input-group">
+                                <input type="date" id="jadwal-reservasi" class="form-control form-control-solid"
+                                    value="" />
+                            </div>
                         </div>
                     </div>
-
-                </div>
-                <hr class="my-2" />
-
-                <div class="card mt-5 mb-2">
-                    
-                    <div class="row mt-3" id="daftarLocation">
-                    </div> 
-
-                    <div id="accordion" class="myaccordion">
-                        <div class="card" id="ltLocation">
-                            
-                        </div>
+                    <hr class="mt-2 mb-4" />
+                    <div class="row justify-content-center gap-3 mx-auto">
+                        <button class="btn btn-primary col-lg-3" type="button" onclick="showArea()">Button</button>
+                        <button class="btn btn-primary col-lg-3" type="button" onclick="showArea()">Button</button>
+                        <button class="btn btn-primary col-lg-3" type="button" onclick="showArea()">Button</button>
+                        <button class="btn btn-primary col-lg-3" type="button" onclick="showArea()">Button</button>
+                        <button class="btn btn-primary col-lg-3" type="button" onclick="showArea()">Button</button>
+                        <button class="btn btn-primary col-lg-3" type="button" onclick="showArea()">Button</button>
                     </div>
-                        
                 </div>
             </div>
-        </div>
-        <br />
-
-        <!--SECOND VIEW-->
-        <div class="card" id="reservationForLayout">
-            <div class="card-body p-2 mb-5">
-                <div class="d-flex justify-content-start align-items-center pt-5 px-5">
-                    <button id="btn-showDiv1" type="button" class="btn btn-success btn-lg" onclick="ShowDiv1()" >Back</button>
+            <div class="card m-5" id="view-2" style="display: none">
+                <div class="card-header">
+                    <h5 class="text-center fw-bold p-0 m-0">Select Desk</h5>
                 </div>
-                <div class="d-flex justify-content-center">
-                    <div class="d-flex flex-row justify-content-center align-items-center">
-                        <button type="button" class="btn btn-block btn-lg p-2" id="prevPageId" onclick="prevPage()"><i class="fa fa-angle-double-left"></i></button>
-                    </div> 
-                    <div class="d-flex flex-row justify-content-center">
-                        <div class="card-body p-3">
-                            <div class="row mb-5">
-                                <input type="text" id="areaName" class="form-control text-center" style="border: none; font-size: 22px; font-weight: 600;"  value="" readonly autocomplete="off"/>
-                                <input type="text" id="deskCount" class="form-control text-center text-primary" style="border: none; font-size: 18px;"  value="" readonly autocomplete="off"/>
-                                
-                            </div>
-                            <div class="row justify-content-center mb-5">
-                                <a class="col-1 d-flex align-content-center justify-content-center flex-wrap flex-grow-1" id="prevPageId" onclick="prevPage()"  style="cursor: pointer;" ><i class="fa fa-angle-double-left fa-2x"></i></a>
-                                <a id="imageWrapper" style="cursor: pointer;"  class="col-8 image-area text-decoration-none p-0" data-fancybox="responsive">
-                                    <img id="imageResult"
-                                         src=""
-                                         alt=""
-                                         width="480"
-                                         height="360"
-                                         class="img-fluid rounded shadow-sm mx-auto d-block" />
-                                </a>
-                                <a class="col-1 d-flex align-content-center justify-content-center flex-wrap flex-grow-1" id="nextPageId" onclick="nextPage()"  style="cursor: pointer" ><i class="fa fa-angle-double-right fa-2x"></i></a>
-                            </div>
-                            <div class="row d-flex justify-content-center">
-                                <div class="dot-container"></div>
-                                <div class="col-10"><input type="checkbox" id="btnAll" class="form-check-input" onchange="showAvailable()"  />&nbsp;&nbsp;Show All</div>
-                                <button type="button" id="btnAll" class="btn btn-success btn-icon btn-sm" onclick="showAvailable()">All</button> 
-                            </div>
-                            <div class="row justify-content-center">
-                                <div class="table-responsive col-10">
-                                    <table id="dataTableReservation" class="table align-middle table-row-dashed fs-6 gy-5">
-                                        <thead>
-                                            <tr class="text-start text-gray-500 fw-bolder fs-7 gs-0">
-                                                <th id="desk" class="text-center" style="font-size: 16px;" >Desk</th>
-                                                <th id="status" class="text-center" style="font-size: 16px;" >Status</th>
-                                                <th class="text-end"></th>
-                                            </tr>
-                                        </thead>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
+                <div class="card-body">
+                    <div class="row mb-5">
+                        <input class="text-center fs-5" type="text" id="txtareaname" name="txtareaname" value="Office"
+                            readonly style="border: none">
                     </div>
-                    <div class="d-flex flex-row justify-content-center align-items-center">
-                        <button type="button" class="btn btn-block btn-lg p-2" id="nextPageId" onclick="nextPage()"><i class="fa fa-angle-double-right"></i></button>
-                    </div> 
-                </div>
-            </div>
-            <div class="d-flex flex-grow-1 justify-content-end align-items-center p-5">
-                <button id="booking" type="button" class="btn btn-success btn-lg btn-block" disabled onclick="BookingReservation()" >Book</button>
-            </div>
-        </div>
-
-
-    </form>
-    <!--MODAL POPUP RESERVATION-->
-    <div id="modalReservation" class="modal" tabindex="-1" role="dialog">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h1 class="modal-title">
-                        Reservation For
-                    </h1>
-                </div>
-                <div class="modal-body">
-                    <div class="col">
-                        <div class="row mb-5">
-                            <div class="col-2 d-flex justify-content-center align-items-center"><i class="fa fa-calendar-times fa-3x"></i></div>
-                            <div class="col-10"><input type="text" class="form-control form-control-lg" id="dtReservation" placeholder="Pilih tanggal reservasi" readonly style="cursor: pointer" /></div> 
-                            <div class="col-10"><input type="date" class="form-control form-control-lg" id="dtReservation" autocomplete="off"/></div>
-                        </div>
-                        <div class="row">
-                            <div class="col-2 d-flex justify-content-center align-items-center"><i class="fa fa-clock fa-3x"></i></div>
-                            <div class="col-10">
-                                <select id="ddlTimeReservation" class="select form-select-lg form-select-solid form-control" data-control="select2">
-                                    <!--Booking Time-->
-                                </select>
-                            </div>
-                        </div>
+                    <div class="text-center">
+                        <img id="imageResult" src="/img/penis1.png" alt="gambar layout" class="rounded mx-auto d-block"
+                            width="450px" />
+                    </div>
+                    <div class="m-auto my-5" style="width: 700px">
+                        <table id="tabel_reservation" class="table align-middle table-striped gy-5 ">
+                            <thead class="table-dark">
+                                <tr>
+                                    <th class="text-center">Desk</th>
+                                    <th class="text-center">Status</th>
+                                    <th class="text-center">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="text-center">Desk A1</td>
+                                    <td class="text-center"><span class="badge bg-primary">available</span></td>
+                                    <td class="text-center"><input type="radio" name="intareadetailid" id="intareadetailid"></button></td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-success" id="submitReservationPopup" onclick="submitReservationPopup()">Confirm</button>
-                </div>
             </div>
-        </div>
+        </form>
     </div>
-</div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"
+        integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/js/all.min.js"
+        integrity="sha512-rpLlll167T5LJHwp0waJCh3ZRf7pO6IT1+LZOhAyP6phAirwchClbTZV3iqL3BMrVxIYRbzGTpli4rfxsCK6Vw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/v/bs5/jq-3.6.0/dt-1.13.1/datatables.min.js"></script>
+    <script src="{{ asset('Transaction/reservation_detail.js') }}"></script>
 @endsection

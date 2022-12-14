@@ -9,6 +9,8 @@ use App\Models\Mlocation;
 use App\Models\User;
 use App\Models\Mareaheader;
 use App\Models\Mareadetail;
+use App\Models\Treservation;
+use Carbon\Carbon;
 
 class DatabaseSeeder extends Seeder
 {
@@ -148,6 +150,12 @@ class DatabaseSeeder extends Seeder
             'txtdeskname' => 'Desk A1',
             'txtstatus' => 'available',
             'intareaheaderid' => 3
+        ]);
+
+        Treservation::create([
+            'dtreservation' => Carbon::parse('2022-12-15'),
+            'txtinserted' => 'ojan',
+            'intareadetailid' => 1,
         ]);
         
     }

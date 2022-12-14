@@ -19,7 +19,7 @@
                                 <div class="col-lg-8 d-flex">
                                     <div class="card-body d-flex flex-column align-items-center text-center m-lg-5 p-0">
                                         <div class="p-3">
-                                            <h1>Ilyasa Aliadjrun</h1>
+                                            <h1>{{auth()->user()->name}}</h1>
                                             <h3 class="text-primary mb-2">User</h3>
                                         </div>
                                     </div>
@@ -35,7 +35,7 @@
                                 style="padding: 1.25rem 1.25rem 0px 1.25rem;">Schedule</h2>
                             <div class="table-responsive mt-4" id="table-home-page"
                                 style="padding: 0 1.25rem 1.25rem 1.25rem;">
-                                <table id="tabel_reservasi" class="table align-middle table-striped gy-5"
+                                <table id="tabel_home" class="table align-middle table-striped gy-5"
                                     style="font-size: 18px">
                                     <thead>
                                         <tr>
@@ -50,7 +50,7 @@
                                     <tbody>
                                         @foreach ($reservations as $reservation)
                                             <tr>
-                                                <td><a href="#" data-bs-toggle="modal" data-bs-target="#modalReservation{{ $reservation->intreservationid }}" class="badge bg-info">Kontol</a></td>
+                                                <td class="text-center"><a href="#" style="text-decoration: none" data-bs-toggle="modal" data-bs-target="#modalReservation{{ $reservation->intreservationid }}" class="btn btn-primary"><span><i class="fas fa-arrow-right"></i></span></a></td>
                                                 <td>{{ $reservation->dtreservation }}</td>
                                                 <td>{{ $reservation->areadetail->header->location->txtlocationname }}</td>
                                                 <td>{{ $reservation->areadetail->header->txtareaname }}</td>
@@ -72,9 +72,9 @@
                                                                 @csrf
                                                                 <input type="text" value="checkin" name="txtreservationstatus" hidden>
                                                                 @if($reservation->txtreservationstatus == 'checkin')
-                                                                <button class="btn btn-info" type="submit" disabled>Check In</button>
+                                                                <button class="btn btn-primary" type="submit" disabled>Check In</button>
                                                                 @else
-                                                                <button class="btn btn-info" type="submit">Check In</button>
+                                                                <button class="btn btn-primary" type="submit">Check In</button>
                                                                 @endif
                                                             </form>
                                                             <form action="/reservation/{{ $reservation->intreservationid }}" method="POST" class="d-inline">
