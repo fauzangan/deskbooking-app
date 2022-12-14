@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Mareadetail;
+use App\Models\Mlocation;
 use App\Models\Treservation;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -28,7 +30,10 @@ class ReservationController extends Controller
      */
     public function create()
     {
-        return view('Transaction.detail');
+        return view('Transaction.detail', [
+            'details' => Mareadetail::where('txtstatus', 'available')->get(),
+            'locations' => Mlocation::all()
+        ]);
     }
 
     /**

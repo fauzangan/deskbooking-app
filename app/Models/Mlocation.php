@@ -17,6 +17,7 @@ class Mlocation extends Model
     }
 
     public function area(){
-        return $this->hasMany(Mlocation::class, 'intlocationid');
+        return $this->hasMany(Mareaheader::class, 'intlocationid');
     }
+    
 }
