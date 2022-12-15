@@ -36,5 +36,6 @@ Route::put('/location/updatelocation/{id}', [LocationController::class, 'updateL
 
 // Route Area
 Route::post('/area/detail', [AreaController::class, 'createDetail']);
+Route::get('/reservation/create/{reservation}', [ReservationController::class, 'createDetail']);
 Route::resource('/area', AreaController::class)->middleware('admin');
 Route::resource('/reservation', ReservationController::class)->middleware('auth');

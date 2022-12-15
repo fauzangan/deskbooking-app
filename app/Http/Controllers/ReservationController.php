@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Mareadetail;
+use App\Models\Mareaheader;
 use App\Models\Mlocation;
 use App\Models\Treservation;
 use App\Models\User;
@@ -28,9 +29,11 @@ class ReservationController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
+        $url = $request->id;
         return view('Transaction.detail', [
+            'id' => $url,
             'details' => Mareadetail::where('txtstatus', 'available')->get(),
             'locations' => Mlocation::all()
         ]);
@@ -44,7 +47,20 @@ class ReservationController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $id = $request->intareadetailid;
+        $rules = $request->validate([
+            'dtreservation' => ['required'],
+            'txtinserted' => ['required'],
+            'intareadetailid' => ['required']
+        ]);
+
+        $booking = [
+            'txtstatus' => 'unavailable'
+        ];
+
+        Treservation::create($rules);
+        Mareadetail::where('intareadetailid', $id)->update($booking);
+        return redirect('/reservation');
     }
 
     /**
@@ -97,5 +113,12 @@ class ReservationController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function createDetail(Request $request, $id){
+        return view('Transaction.create', [
+            'header' => Mareaheader::where('intareaheaderid', $id)->first(),
+            'details' => Mareadetail::where('intareaheaderid', $id)->where('txtstatus', 'available')->get()
+        ]);
     }
 }
