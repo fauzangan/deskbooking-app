@@ -62,11 +62,6 @@ class DatabaseSeeder extends Seeder
             'intSiteId' => 1
         ]);
 
-        Mlocation::create([
-            'txtLocationName' => 'Contolodon',
-            'intSiteId' => 1
-        ]);
-
         Mareaheader::create([
             'txtareaname' => 'Kantor 1',
             'intlocationid' => 1
@@ -75,11 +70,6 @@ class DatabaseSeeder extends Seeder
         Mareaheader::create([
             'txtareaname' => 'Kantor 2',
             'intlocationid' => 2
-        ]);
-
-        Mareaheader::create([
-            'txtareaname' => 'Kantor 3',
-            'intlocationid' => 3
         ]);
 
         Mareadetail::create([

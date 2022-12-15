@@ -13,7 +13,7 @@
                     Master Area
                 </a>
                 <div class="sb-sidenav-menu-heading">Monitoring</div>
-                <a class="nav-link {{ Request::is('monitoring*')? 'active' : '' }}" href="#">
+                <a class="nav-link {{ Request::is('monitoring*')? 'active' : '' }}" href="/monitoring">
                     <div class="sb-nav-link-icon"><i class="fas fa-desktop"></i></div>
                     Monitoring
                 </a>

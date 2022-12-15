@@ -3,6 +3,7 @@
 use App\Http\Controllers\AreaController;
 use App\Http\Controllers\LocationController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\MonitoringController;
 use App\Http\Controllers\MsiteController;
 use App\Http\Controllers\ReservationController;
 use App\Http\Controllers\SiteController;
@@ -39,3 +40,6 @@ Route::post('/area/detail', [AreaController::class, 'createDetail']);
 Route::get('/reservation/create/{reservation}', [ReservationController::class, 'createDetail']);
 Route::resource('/area', AreaController::class)->middleware('admin');
 Route::resource('/reservation', ReservationController::class)->middleware('auth');
+
+// Route Monitoring
+Route::get('/monitoring', [MonitoringController::class, 'index']);
